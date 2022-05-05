@@ -1,0 +1,12 @@
+curl --location --request POST 'https://data.mongodb-api.com/app/data-ryhqv/endpoint/data/beta/action/findOne' \
+--header 'Content-Type: application/json' \
+--header 'Access-Control-Request-Headers: *' \
+--header 'api-key: FFVBwTOnWXX5xkJNYHCWIS1pw7HS2c11mcPdZCdgKkAhLuIUGiDrIYfEr3SAl7Fn' \
+--data-raw '{
+    "collection":"mytables",
+    "database":"mytable",
+    "dataSource":"Cluster0",
+    "projection": {}
+}'
+
+

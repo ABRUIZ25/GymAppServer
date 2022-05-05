@@ -10,6 +10,9 @@ var mongoose = require("mongoose");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+let userslogin = require('./routes/Login')
+let Owner = require('./routes/Owner')
+const { info } = require('console');
 
 var app = express();
 
@@ -17,12 +20,15 @@ app.use(cors({
   origin: "*"
 }));
 
+
+
 require("dotenv").config();
 
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+mongoose.connect(process.env.MONGODB_URI,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
   .then(() => {
     console.log('CONNECTED TO MONGODB');
   }).catch((error) => {
@@ -41,6 +47,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/login', userslogin)
+app.use('/Owner', Owner)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
